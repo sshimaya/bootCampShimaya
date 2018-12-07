@@ -11,7 +11,7 @@ public class MemberJudgeService {
 
 		MemberJudgeResponseDto response = new MemberJudgeResponseDto();
 		int totalScore = totalScore(request.getEventPlanning(), request.getCogitation(), request.getCoodination(), request.getProgrammingAbility(), request.getInfrastructureKnowledge());
-
+//		int totalScore = request.getEventPlanning() + request.getCogitation() + request.getCoodination() + request.getProgrammingAbility() + request.getInfrastructureKnowledge();
 		if (request.getEventPlanning() <= 1 || request.getCoodination() <= 1 || totalScore <= 10) {
 			response.setMemberName(request.getMemberName());
 			response.setEnlistedPropriety(false);

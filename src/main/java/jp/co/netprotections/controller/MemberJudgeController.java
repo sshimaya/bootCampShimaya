@@ -62,13 +62,15 @@ public class MemberJudgeController {
 
 				//無効な配列要素はエラーリストに入れる
 				errorList.add(res);
-			}
+			} else
+			{
 			//有効な配列要素は判定してノーマルリストに入れる
 			MemberJudgeResponseDto response = new MemberJudgeResponseDto();
 			MemberJudgeService service = new MemberJudgeService();
 			response = service.service(memberCandidates);
 			normalList.add(response);
-		}
+			}
+			}
 		//2種類を統合する
 		judgedCandidatesResultList.addAll(errorList);
 		judgedCandidatesResultList.addAll(normalList);
@@ -77,7 +79,7 @@ public class MemberJudgeController {
 	}
 	//無効の判定はここで
 	private boolean hasInvalidArgument(MemberJudgeRequestDto req) {
-		if (req.getMemberName() == null) {
+		if (req.getMemberName() == null || req.getMemberName() == "" ) {
 			return true;
 		}
 
